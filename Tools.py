@@ -5,6 +5,8 @@ class Tools:
     def __init__(self):
         pass
     
+    
+    
     def lagrange_interpolation(self, x, x_points, y_points):
         """Fonction pour calculer l'interpolation de Lagrange à un point donné x."""
         result = 0
@@ -18,8 +20,9 @@ class Tools:
             result += term
         return result
     
+    
     def trace(self, pointList):
-        # Séparer les coordonnées x et y
+        
         x_points = np.array([point[0] for point in pointList])
         y_points = np.array([point[1] for point in pointList])
 
@@ -37,17 +40,14 @@ class Tools:
             y_vals_subset = [self.lagrange_interpolation(x, x_subset, y_subset) for x in x_vals]
             
             # Tracer chaque courbe pour le groupe de 3 points
-            plt.plot(x_vals, y_vals_subset, label=f'Interpolation {i//2 + 1}', color='blue')
+            plt.plot(x_vals, y_vals_subset, color='blue')
             
-            # Marquer les points d'origine en rouge
             plt.scatter(x_subset, y_subset, color='red', zorder=5)
 
-        # Ajouter les titres et labels
         plt.title("Interpolation de Lagrange pour les points donnés")
         plt.xlabel("x")
         plt.ylabel("y")
         
-        # Ajouter une légende
         plt.legend()
         plt.grid(True)
         
